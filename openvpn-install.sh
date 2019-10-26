@@ -4,6 +4,7 @@
 #
 # Copyright (c) 2013 Nyr. Released under the MIT License.
 
+export DEBIAN_FRONTEND=noninteractive
 
 if grep -qs "14.04" /etc/os-release; then
 	echo "Ubuntu 14.04 is too old and not supported"
@@ -288,7 +289,7 @@ LimitNPROC=infinity" > /etc/systemd/system/openvpn-server@server.service.d/disab
 	fi
 	if [[ "$os" = "debian" ]]; then
 		apt-get update
-		apt-get install openvpn iptables openssl ca-certificates -y
+		apt-get install openvpn iptables openssl ca-certificates -yq
 	else
 		# Else, the distro is CentOS
 		yum install epel-release -y
